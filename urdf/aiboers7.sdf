@@ -1,0 +1,1327 @@
+<sdf version='1.5'>
+  <model name='aiboERS7'>
+    <link name='body'>
+      <pose>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.175 0.08298 0.09 0 -0 0</pose>
+        <mass>0.613</mass>
+        <inertia>
+          <ixx>0.00247501</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00750664</iyy>
+          <iyz>0</iyz>
+          <izz>0.0071137</izz>
+        </inertia>
+      </inertial>
+      <collision name='body_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/body_simple.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='body_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/body.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <link name='LB_shoulder'>
+      <pose>0.09325 0.136 0.0892 0 -0 0</pose>
+      <inertial>
+        <pose>0.003468 0.001798 -0.009007 0 -0 0</pose>
+        <mass>0.05</mass>
+        <inertia>
+          <ixx>2.21195e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>4.70686e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2.55456e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='LB_shoulder_collision'>
+        <pose>-0.0395 0.02956 0.039 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/LB_shoulder_simple.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='LB_shoulder_visual'>
+        <pose>-0.0395 0.02956 0.039 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/LB_shoulder.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='legLB1' type='revolute'>
+      <child>LB_shoulder</child>
+      <parent>body</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-2.3562</lower>
+          <upper>2.0944</upper>
+          <effort>1000</effort>
+          <velocity>2.8143</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='LB_leg1'>
+      <pose>0.09325 0.15988 0.0892 0 -0 0</pose>
+      <inertial>
+        <pose>9e-06 0.002377 -0.010723 0 -0 0</pose>
+        <mass>0.073</mass>
+        <inertia>
+          <ixx>0.000115605</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000115461</iyy>
+          <iyz>0</iyz>
+          <izz>3.01475e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='LB_leg1_collision'>
+        <pose>-0.0275 0.02686 0.0185 -3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/LB_leg1_simple.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='LB_leg1_visual'>
+        <pose>-0.0275 0.02686 0.0185 -3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/LB_leg1.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='legLB2' type='revolute'>
+      <child>LB_leg1</child>
+      <parent>LB_shoulder</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-0.15708</lower>
+          <upper>1.58825</upper>
+          <effort>1000</effort>
+          <velocity>2.498</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='LB_leg2'>
+      <pose>0.08074 0.18963 -0.00842 0 -0 0</pose>
+      <inertial>
+        <pose>-0.00457545 1.20482e-05 -0.017478 0 -0 0</pose>
+        <mass>0.083</mass>
+        <inertia>
+          <ixx>0.000221664</ixx>
+          <ixy>9.42755e-09</ixy>
+          <ixz>-8.34367e-06</ixz>
+          <iyy>0.000237324</iyy>
+          <iyz>7.784e-08</iyz>
+          <izz>0.000118535</izz>
+        </inertia>
+      </inertial>
+      <collision name='LB_leg2_collision'>
+        <pose>-0.0205 -0.0097 -0.0388 -3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/B_leg2_simple.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='LB_leg2_collision_LB_leg2_1'>
+        <pose>-0.01381 -0.0095 -0.09363 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.01222</radius>
+          </sphere>
+        </geometry>
+      </collision>
+      <visual name='LB_leg2_visual'>
+        <pose>-0.0127 0.0242 0.0125 -3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/B_leg2.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='LB_leg2_visual_LB_leg2_1'>
+        <pose>-0.03831 0.0228 -0.06963 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/B_paw.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='legLB3' type='revolute'>
+      <child>LB_leg2</child>
+      <parent>LB_leg1</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.5236</lower>
+          <upper>2.2166</upper>
+          <effort>1000</effort>
+          <velocity>2.8361</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='LF_shoulder'>
+      <pose>0.2706 0.136 0.0892 0 -0 0</pose>
+      <inertial>
+        <pose>-0.001888 0.002933 0.008598 0 -0 0</pose>
+        <mass>0.05</mass>
+        <inertia>
+          <ixx>4.07077e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>8.4078e-05</iyy>
+          <iyz>0</iyz>
+          <izz>4.5253e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='LF_shoulder_collision'>
+        <pose>-0.0002 0.0252 0.003 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/LF_shoulder_simple.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='LF_shoulder_visual'>
+        <pose>-0.052 0.0329 0.0509 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/LF_shoulder.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='legLF1' type='revolute'>
+      <child>LF_shoulder</child>
+      <parent>body</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-2.0944</lower>
+          <upper>2.3562</upper>
+          <effort>1000</effort>
+          <velocity>2.8143</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='LF_leg1'>
+      <pose>0.2706 0.1599 0.0892 0 -0 0</pose>
+      <inertial>
+        <pose>0.000343 0.001992 -0.011436 0 -0 0</pose>
+        <mass>0.073</mass>
+        <inertia>
+          <ixx>0.000115662</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000114318</iyy>
+          <iyz>0</iyz>
+          <izz>2.8949e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='LF_leg1_collision'>
+        <pose>0.00107 0.0198 -0.0459 -3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/LF_leg1_simple.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='LF_leg1_visual'>
+        <pose>-0.01293 0.0262 0.0184 -3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/LF_leg1.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='legLF2' type='revolute'>
+      <child>LF_leg1</child>
+      <parent>LF_shoulder</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-0.15708</lower>
+          <upper>1.58825</upper>
+          <effort>1000</effort>
+          <velocity>2.8143</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='LF_leg2'>
+      <pose>0.28311 0.16509 -0.00842 0 -0 0</pose>
+      <inertial>
+        <pose>0.00119534 -1.14337e-05 -0.00284031 0 -0 0</pose>
+        <mass>0.083</mass>
+        <inertia>
+          <ixx>0.000241868</ixx>
+          <ixy>-5.69812e-09</ixy>
+          <ixz>4.00122e-05</ixz>
+          <iyy>0.00026196</iyy>
+          <iyz>1.04374e-08</iyz>
+          <izz>0.000100091</izz>
+        </inertia>
+      </inertial>
+      <collision name='LF_leg2_collision'>
+        <pose>-0.0127 0.04666 0.0125 -3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/F_leg2_simple.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='LF_leg2_collision_LF_leg2_1'>
+        <pose>0.04522 0.0143 -0.08144 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.01222</radius>
+          </sphere>
+        </geometry>
+      </collision>
+      <visual name='LF_leg2_visual'>
+        <pose>-0.0127 0.0466 0.0125 -3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/F_leg2.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='LF_leg2_visual_LF_leg2_1'>
+        <pose>0.03282 0.0267 -0.06894 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/F_paw.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='legLF3' type='revolute'>
+      <child>LF_leg2</child>
+      <parent>LF_leg1</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.5236</lower>
+          <upper>2.2166</upper>
+          <effort>1000</effort>
+          <velocity>2.8361</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='RB_shoulder'>
+      <pose>0.09325 0.006 0.0892 0 -0 0</pose>
+      <inertial>
+        <pose>0.003468 -0.001798 -0.009007 0 -0 0</pose>
+        <mass>0.05</mass>
+        <inertia>
+          <ixx>2.13278e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>4.68833e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2.61584e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='RB_shoulder_collision'>
+        <pose>-0.0003 0.0017 0.0042 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/RB_shoulder_simple.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='RB_shoulder_visual'>
+        <pose>-0.0395 0.006 0.039 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/RB_shoulder.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='legRB1' type='revolute'>
+      <child>RB_shoulder</child>
+      <parent>body</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-2.3562</lower>
+          <upper>2.0944</upper>
+          <effort>1000</effort>
+          <velocity>2.8143</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='RB_leg1'>
+      <pose>0.09325 0.006 0.0892 0 -0 0</pose>
+      <inertial>
+        <pose>9e-06 -0.002377 -0.010723 0 -0 0</pose>
+        <mass>0.073</mass>
+        <inertia>
+          <ixx>0.000117943</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000117596</iyy>
+          <iyz>0</iyz>
+          <izz>2.99438e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='RB_leg1_collision'>
+        <pose>-0.0029 -0.01955 -0.0451 -3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/RB_leg1_simple.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='RB_leg1_visual'>
+        <pose>-0.0275 -0.013 0.0185 -3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/RB_leg1.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='legRB2' type='revolute'>
+      <child>RB_leg1</child>
+      <parent>RB_shoulder</parent>
+      <axis>
+        <xyz>-1 0 0</xyz>
+        <limit>
+          <lower>-0.15708</lower>
+          <upper>1.58825</upper>
+          <effort>1000</effort>
+          <velocity>2.498</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='RB_leg2'>
+      <pose>0.08074 -0.02311 -0.00842 0 -0 0</pose>
+      <inertial>
+        <pose>-0.00457545 0 -0.017478 0 -0 0</pose>
+        <mass>0.083</mass>
+        <inertia>
+          <ixx>0.000221663</ixx>
+          <ixy>0</ixy>
+          <ixz>-8.34367e-06</ixz>
+          <iyy>0.000237324</iyy>
+          <iyz>0</iyz>
+          <izz>0.000118535</izz>
+        </inertia>
+      </inertial>
+      <collision name='RB_leg2_collision'>
+        <pose>-0.0205 0.0088 -0.0388 -3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/B_leg2_simple.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='RB_leg2_collision_RB_leg2_1'>
+        <pose>-0.01381 0.0097 -0.09363 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.01222</radius>
+          </sphere>
+        </geometry>
+      </collision>
+      <visual name='RB_leg2_visual'>
+        <pose>-0.0127 0.0427 0.0125 -3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/B_leg2.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='RB_leg2_visual_RB_leg2_1'>
+        <pose>-0.03831 0.042 -0.06963 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/B_paw.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='legRB3' type='revolute'>
+      <child>RB_leg2</child>
+      <parent>RB_leg1</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.5236</lower>
+          <upper>2.2166</upper>
+          <effort>1000</effort>
+          <velocity>2.8361</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='RF_shoulder'>
+      <pose>0.2706 0.006 0.0892 0 -0 0</pose>
+      <inertial>
+        <pose>-0.001888 -0.002933 0.008598 0 -0 0</pose>
+        <mass>0.05</mass>
+        <inertia>
+          <ixx>4.44244e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>8.19969e-05</iyy>
+          <iyz>0</iyz>
+          <izz>3.93385e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='RF_shoulder_collision'>
+        <pose>-0.052 0.0059 -0.046 3.14159 -1.5707 -4.39666e-18</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/RF_shoulder_simple.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='RF_shoulder_visual'>
+        <pose>-0.052 0.0059 -0.046 3.14159 -1.5707 -4.39666e-18</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/RF_shoulder.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='legRF1' type='revolute'>
+      <child>RF_shoulder</child>
+      <parent>body</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-2.0944</lower>
+          <upper>2.3562</upper>
+          <effort>1000</effort>
+          <velocity>2.8143</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='RF_leg1'>
+      <pose>0.2706 0.006 0.0892 0 -0 0</pose>
+      <inertial>
+        <pose>0.000343 -0.001992 -0.011436 0 -0 0</pose>
+        <mass>0.073</mass>
+        <inertia>
+          <ixx>0.000119697</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000117945</iyy>
+          <iyz>0</iyz>
+          <izz>2.93666e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='RF_leg1_collision'>
+        <pose>0.00117 -0.0199 -0.046 -3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/RF_leg1_simple.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='RF_leg1_visual'>
+        <pose>-0.02303 0.0075 0.0185 -3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/RF_leg1.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='legRF2' type='revolute'>
+      <child>RF_leg1</child>
+      <parent>RF_shoulder</parent>
+      <axis>
+        <xyz>-1 0 0</xyz>
+        <limit>
+          <lower>-0.15708</lower>
+          <upper>1.58825</upper>
+          <effort>1000</effort>
+          <velocity>2.8143</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='RF_leg2'>
+      <pose>0.28311 -0.02311 -0.00842 0 -0 0</pose>
+      <inertial>
+        <pose>0.00119534 1.14337e-05 -0.00284031 0 -0 0</pose>
+        <mass>0.083</mass>
+        <inertia>
+          <ixx>0.000241868</ixx>
+          <ixy>5.69812e-09</ixy>
+          <ixz>4.00122e-05</ixz>
+          <iyy>0.00026196</iyy>
+          <iyz>-1.04374e-08</iyz>
+          <izz>0.000100091</izz>
+        </inertia>
+      </inertial>
+      <collision name='RF_leg2_collision'>
+        <pose>-0.0127 0.042 0.0125 -3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/F_leg2_simple.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='RF_leg2_collision_RF_leg2_1'>
+        <pose>0.04522 0.0097 -0.08144 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.01222</radius>
+          </sphere>
+        </geometry>
+      </collision>
+      <visual name='RF_leg2_visual'>
+        <pose>-0.0127 0.042 0.0125 -3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/F_leg2.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='RF_leg2_visual_RF_leg2_1'>
+        <pose>0.03282 0.0221 -0.06894 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/F_paw.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='legRF3' type='revolute'>
+      <child>RF_leg2</child>
+      <parent>RF_leg1</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.5236</lower>
+          <upper>2.2166</upper>
+          <effort>1000</effort>
+          <velocity>2.8361</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='neck'>
+      <pose>0.2706 0.08302 0.0892 0 -0 0</pose>
+      <inertial>
+        <pose>-0.000341 -0 -0.008011 0 -0 0</pose>
+        <mass>0.015</mass>
+        <inertia>
+          <ixx>1.97e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1.97e-06</iyy>
+          <iyz>0</iyz>
+          <izz>1.688e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='neck_collision'>
+        <pose>0.0460575 -6e-05 0.101875 0 0.44506 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.03</length>
+            <radius>0.015</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='neck_visual'>
+        <pose>0.120935 -0.0471 0.116054 3.14159 -0.890118 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/neck.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='neck_joint' type='revolute'>
+      <child>neck</child>
+      <parent>body</parent>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <lower>-0.925</lower>
+          <upper>0.524</upper>
+          <effort>1000</effort>
+          <velocity>3.0107</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='bulb'>
+      <pose>0.3252 0.08302 0.2122 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.01</mass>
+        <inertia>
+          <ixx>8.72e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>8.72e-06</iyy>
+          <iyz>0</iyz>
+          <izz>8.72e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='bulb_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.04669</radius>
+          </sphere>
+        </geometry>
+      </collision>
+      <visual name='bulb_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.04</radius>
+          </sphere>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='headTilt' type='revolute'>
+      <child>bulb</child>
+      <parent>neck</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.349</lower>
+          <upper>0.8727</upper>
+          <effort>1000</effort>
+          <velocity>3.0107</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='head'>
+      <pose>0.3252 0.08302 0.2122 0 0.44506 0</pose>
+      <inertial>
+        <pose>0.010005 -1.13731e-06 1.63149e-06 0 -0.44506 0</pose>
+        <mass>0.19001</mass>
+        <inertia>
+          <ixx>0.000357226</ixx>
+          <ixy>2.58516e-09</ixy>
+          <ixz>1.28005e-08</ixz>
+          <iyy>0.00068135</iyy>
+          <iyz>-3.37026e-10</iyz>
+          <izz>0.000681141</izz>
+        </inertia>
+      </inertial>
+      <collision name='head_collision'>
+        <pose>-0.09 0.053 0.03 3.14159 -0.44506 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/head_simple.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='head_collision_head_1'>
+        <pose>0.105 -0.00261 0.031 0 -0.44506 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='head_visual'>
+        <pose>-0.09 0.053 0.03 3.14159 -0.44506 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/head.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='head_visual_head_1'>
+        <pose>0.105 -0.00261 0.031 0 -0.44506 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+      <self_collide>0</self_collide>
+      <sensor name='camera_aibo' type='camera'>
+        <update_rate>30</update_rate>
+        <camera name='head'>
+          <horizontal_fov>0.993092</horizontal_fov>
+          <image>
+            <width>416</width>
+            <height>320</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.01</near>
+            <far>50</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <plugin name='camera_controller' filename='libgazebo_ros_camera.so'>
+          <alwaysOn>true</alwaysOn>
+          <updateRate>0.0</updateRate>
+          <cameraName>aiboers7/head/camera_aibo</cameraName>
+          <imageTopicName>image_raw</imageTopicName>
+          <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+          <frameName>camera_link</frameName>
+          <hackBaseline>0.07</hackBaseline>
+          <distortionK1>0.0</distortionK1>
+          <distortionK2>0.0</distortionK2>
+          <distortionK3>0.0</distortionK3>
+          <distortionT1>0.0</distortionT1>
+          <distortionT2>0.0</distortionT2>
+        </plugin>
+        <pose>0.105 -0.00261 0.031 0 -0.44506 0</pose>
+      </sensor>
+    </link>
+    <joint name='headPan' type='revolute'>
+      <child>head</child>
+      <parent>bulb</parent>
+      <axis>
+        <xyz>0.430512 0 0.902585</xyz>
+        <limit>
+          <lower>-1.6232</lower>
+          <upper>1.6232</upper>
+          <effort>1000</effort>
+          <velocity>3.0107</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='L_ear_prev'>
+      <pose>0.310211 0.14602 0.236522 0 0.44506 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0001</mass>
+        <inertia>
+          <ixx>2.2e-09</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>4.05e-09</iyy>
+          <iyz>0</iyz>
+          <izz>2.2e-09</izz>
+        </inertia>
+      </inertial>
+      <collision name='L_ear_prev_collision'>
+        <pose>0 -0.0072 0 1.5707 -0.44506 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0035</length>
+            <radius>0.009</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='L_ear_prev_visual'>
+        <pose>0 -0.0072 0 1.5707 -0.44506 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0035</length>
+            <radius>0.009</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='L_ear_tilt' type='revolute'>
+      <child>L_ear_prev</child>
+      <parent>head</parent>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <lower>-0.52359</lower>
+          <upper>0.5236</upper>
+          <effort>1000</effort>
+          <velocity>1000</velocity>
+        </limit>
+        <dynamics>
+          <damping>1</damping>
+          <friction>1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='L_ear'>
+      <pose>0.310211 0.14602 0.236522 0 -0 0</pose>
+      <inertial>
+        <pose>0.002373 -0.001406 -0.004885 0 -0 0</pose>
+        <mass>0.005</mass>
+        <inertia>
+          <ixx>6.28381e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>7.96821e-06</iyy>
+          <iyz>0</iyz>
+          <izz>1.91652e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='L_ear_collision'>
+        <pose>-0.0409 0.0127 0.028 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/L_ear_simple.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='L_ear_visual'>
+        <pose>-0.0409 0.0127 0.028 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/L_ear.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='L_ear_joint' type='revolute'>
+      <child>L_ear</child>
+      <parent>L_ear_prev</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>0.35</upper>
+          <effort>1000</effort>
+          <velocity>1000</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='R_ear_prev'>
+      <pose>0.310211 0.02002 0.236522 0 0.44506 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0001</mass>
+        <inertia>
+          <ixx>2.2e-09</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>4.05e-09</iyy>
+          <iyz>0</iyz>
+          <izz>2.2e-09</izz>
+        </inertia>
+      </inertial>
+      <collision name='R_ear_prev_collision'>
+        <pose>0 0.002 0 1.5707 -0.44506 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0035</length>
+            <radius>0.009</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='R_ear_prev_visual'>
+        <pose>0 0.002 0 1.5707 -0.44506 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.0035</length>
+            <radius>0.009</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='R_ear_tilt' type='revolute'>
+      <child>R_ear_prev</child>
+      <parent>head</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.52359</lower>
+          <upper>0.5236</upper>
+          <effort>1000</effort>
+          <velocity>1000</velocity>
+        </limit>
+        <dynamics>
+          <damping>1</damping>
+          <friction>1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='R_ear'>
+      <pose>0.310211 0.02002 0.236522 0 -0 0</pose>
+      <inertial>
+        <pose>0.002373 0.001406 -0.004885 0 -0 0</pose>
+        <mass>0.005</mass>
+        <inertia>
+          <ixx>5.88377e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>7.44017e-06</iyy>
+          <iyz>0</iyz>
+          <izz>1.79111e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='R_ear_collision'>
+        <pose>-0.0409 0.06 0.028 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/R_ear_simple.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='R_ear_visual'>
+        <pose>-0.0409 0.06 0.028 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/R_ear.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='R_ear_joint' type='revolute'>
+      <child>R_ear</child>
+      <parent>R_ear_prev</parent>
+      <axis>
+        <xyz>-1 0 0</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>0.35</upper>
+          <effort>1000</effort>
+          <velocity>1000</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='mouth'>
+      <pose>0.373426 0.08302 0.192521 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0001</mass>
+        <inertia>
+          <ixx>1.31502e-08</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.51055e-08</iyy>
+          <iyz>0</iyz>
+          <izz>4.11449e-08</izz>
+        </inertia>
+      </inertial>
+      <collision name='mouth_collision'>
+        <pose>-0.002 0.0145 -0.002 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/mouth_simple.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='mouth_visual'>
+        <pose>-0.002 0.0145 -0.002 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/mouth.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='mouth_joint' type='revolute'>
+      <child>mouth</child>
+      <parent>head</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>1.0472</upper>
+          <effort>1</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='tail_base'>
+      <pose>0.0391 0.08298 0.1402 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0001</mass>
+        <inertia>
+          <ixx>6.126e-10</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.64e-09</iyy>
+          <iyz>0</iyz>
+          <izz>3.64e-09</izz>
+        </inertia>
+      </inertial>
+      <collision name='tail_base_collision'>
+        <pose>0 0 0 3.14159 1.57079 3.14159</pose>
+        <geometry>
+          <cylinder>
+            <length>0.02</length>
+            <radius>0.0035</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='tail_base_visual'>
+        <pose>0 0 0 3.14159 1.57079 3.14159</pose>
+        <geometry>
+          <cylinder>
+            <length>0.02</length>
+            <radius>0.0035</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='tailPan' type='revolute'>
+      <child>tail_base</child>
+      <parent>body</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-1.0472</lower>
+          <upper>1.0472</upper>
+          <effort>1000</effort>
+          <velocity>4.4724</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='tail'>
+      <pose>0.0141 0.08298 0.1402 0 -0 0</pose>
+      <inertial>
+        <pose>-0.008924 2e-06 0.006188 0 -0 0</pose>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>1.32379e-07</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1.45469e-07</iyy>
+          <iyz>0</iyz>
+          <izz>3.95881e-08</izz>
+        </inertia>
+      </inertial>
+      <collision name='tail_collision'>
+        <pose>-0.015 0.0248 0.115 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/tail_simple.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='tail_visual'>
+        <pose>-0.015 0.0248 0.115 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aiboers7_description/meshes/tail.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='tailTilt' type='revolute'>
+      <child>tail</child>
+      <parent>tail_base</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>0.2618</upper>
+          <effort>1000</effort>
+          <velocity>4.4724</velocity>
+        </limit>
+        <dynamics>
+          <damping>200</damping>
+          <friction>200</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <plugin name='gazebo_ros_control' filename='libgazebo_ros_control.so'>
+      <robotNamespace>aiboers7_controller_manager</robotNamespace>
+    </plugin>
+    <static>0</static>
+  </model>
+</sdf>

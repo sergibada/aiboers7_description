@@ -1,0 +1,1119 @@
+<?xml version="1.0"?>
+
+
+
+<robot name="aiboERS7">
+
+
+  <!--ROS Control -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>aiboers7_controller_manager</robotNamespace>
+    </plugin>
+  </gazebo>
+  
+  <gazebo>
+    <static>False</static>
+    <selfCollide>False</selfCollide>
+  </gazebo>
+  
+  
+  <link name="body">
+    <inertial>
+      <origin xyz="0.175 0.08298 0.09" rpy="0 0 0"/>
+      <mass value="0.613"/>
+      <inertia	ixx="0.002475011189860075" ixy="0.0" ixz="0.0" iyy="0.007506640782378954" iyz="0.0" izz="0.007113701431115992" />
+    </inertial>
+      
+    <collision name="geom">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/body_simple.stl"/>
+      </geometry>
+    </collision>
+    
+    <visual name="visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/body.STL"/>
+      </geometry>
+      <material name="white">
+	<color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+   
+  </link>
+   
+  <link name="RF_shoulder" >
+    
+    <inertial>
+      <origin xyz="-0.001888 -0.002933 0.008598" rpy="0 0 0"/>
+      <mass value="0.05"/>
+      <inertia ixx="4.442444469634999e-05" ixy="0.0" ixz="0.0" iyy="8.199685180759998e-05" iyz="0.0" izz="3.9338485833950003e-05" />
+    </inertial>
+    
+    <collision name="geom">
+      <origin xyz="-0.052 0.0059 -0.046" rpy="3.14159 -1.5707 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/RF_shoulder_simple.stl"/>
+      </geometry>
+    </collision>
+   
+    <visual name="visual">
+      <origin xyz="-0.052 0.0059 -0.046" rpy="3.14159 -1.5707 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/RF_shoulder.STL"/>
+      </geometry>
+      <material name="grey">
+	<color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+    
+  </link>
+  
+  <joint type="revolute" name="legRF1">
+    
+    <origin xyz="0.2706 0.006 0.0892" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="-2.0944" upper="2.3562" velocity="2.8143"/>
+    <axis xyz="0 1 0"/>
+    <parent link="body"/>
+    <child link="RF_shoulder"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-2.09" soft_upper_limit="2.3562" />
+    <dynamics damping="200" friction="200"/>
+    
+  </joint>
+  
+  <link name="RF_leg1">
+    
+    <inertial>
+      <origin xyz="0.000343 -0.001992 -0.011436" rpy="0 0 0"/>
+      <mass value="0.073"/>
+      <inertia	ixx="0.00011969654852187499" ixy="0.0" ixz="0.0" iyy="0.00011794468285297098" iyz="0.0" izz="2.9366620594846e-05" />
+    </inertial>
+       
+    <collision name="geom">'
+      <origin xyz="0.00117 -0.0199 -0.046" rpy="3.1416 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/RF_leg1_simple.stl"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="-0.02303 0.0075 0.0185" rpy="3.1416 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/RF_leg1.STL"/>
+      </geometry>
+      <material name="white">
+	<color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+        
+  </link>
+  
+  <joint type="revolute" name="legRF2">
+    
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="-0.15708" upper="1.58825" velocity="2.8143"/>
+    <axis xyz="-1 0 0"/>
+    <parent link="RF_shoulder"/>
+    <child link="RF_leg1"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-0.15" soft_upper_limit="1.58" />
+    <dynamics damping="200" friction="200"/>
+    
+  </joint>
+  
+  <link name="RF_leg2">
+    
+    <inertial>
+      <origin xyz="-0.004809 0.000013 0.008158" rpy="0 0 0"/>
+      <mass value="0.073"/>
+      <inertia	ixx="0.00011969654852187499" ixy="0.0" ixz="0.0" iyy="0.00011794468285297098" iyz="0.0" izz="2.9366620594846e-05" />
+    </inertial>
+    
+     <collision name="geom">
+      <origin xyz="-0.0127 0.042 0.0125" rpy="3.1416 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/F_leg2_simple.stl"/>
+      </geometry>
+    </collision>
+        
+    <visual>
+      <origin xyz="-0.0127 0.042 0.0125" rpy="3.1416 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/F_leg2.STL"/>
+      </geometry>
+      <material name="grey">
+	<color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+    
+    
+  </link>
+  
+  <joint type="revolute" name="legRF3">
+    
+    <origin xyz="0.01251 -0.02911 -0.09762" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="-0.5236" upper="2.2166" velocity="2.8361"/>
+    <axis xyz="0 1 0"/>
+    <parent link="RF_leg1"/>
+    <child link="RF_leg2"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-0.52" soft_upper_limit="2.83" />
+    <dynamics damping="200" friction="200"/>
+    
+  </joint>
+  
+  <link name="RF_paw">
+    
+    <inertial>
+      <origin xyz="-0.000193 0 -0.001688" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia ixx="4.888e-05" ixy="0" ixz="0" iyy="4.888e-05" iyz="0" izz="4.888e-05"/>
+    </inertial>
+    
+    <collision>
+      <origin xyz="0 0.0097 0"/>
+      <geometry>
+	<sphere radius="0.01222"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="-0.0124 0.0221 0.0125" rpy="3.14159 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/F_paw.STL"/>
+      </geometry>
+      <material name="dark grey">
+	<color rgba="0.102 0.102 0.102 1"/>
+      </material>
+    </visual>
+    
+  </link>
+  
+  <joint type="fixed" name="RF_paw_joint">
+        
+    <origin xyz="0.04522 0 -0.08144" rpy="0 0 0"/>
+    <dynamics damping="1000" friction="1000"/>
+    <parent link="RF_leg2"/>
+    <child link="RF_paw"/>
+
+  </joint>
+ 
+  <link name="LF_shoulder">
+    
+    <inertial>
+      <origin xyz="-0.001888 0.002933 0.008598" rpy="0 0 0"/>
+      <mass value="0.05"/>
+      <inertia	ixx="4.07077236743e-05" ixy="0.0" ixz="0.0" iyy="8.407799796175e-05" iyz="0.0" izz="4.5252994171749996e-05" />
+    </inertial>
+    
+    <collision name="geom">
+      <origin xyz="-0.0002 0.0252 0.003" rpy="3.14159 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/LF_shoulder_simple.stl"/>
+      </geometry>
+    </collision>
+   
+    <visual name="visual">
+      <origin xyz="-0.052 0.0329 0.0509" rpy="3.14159 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/LF_shoulder.STL"/>
+      </geometry>
+      <material name="grey">
+	<color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+    
+  </link>
+  
+  <joint type="revolute" name="legLF1">
+    
+    <origin xyz="0.2706 0.136 0.0892" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="-2.0944" upper="2.3562" velocity="2.8143"/>
+    <axis xyz="0 1 0"/>
+    <parent link="body"/>
+    <child link="LF_shoulder"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-2.09" soft_upper_limit="2.3562" />
+    <dynamics damping="200" friction="200"/>
+
+  </joint>
+
+  <link name="LF_leg1">
+    
+    <inertial>
+      <origin xyz="0.000343 0.001992 -0.011436" rpy="0 0 0"/>
+      <mass value="0.073"/>
+      <inertia	ixx="0.00011566170518423601" ixy="0.0" ixz="0.0" iyy="0.00011431816699501901" iyz="0.0" izz="2.8949038259255004e-05" />
+    </inertial>
+       
+    <collision name="geom">
+      <origin xyz="0.00107 0.0198 -0.0459" rpy="3.1416 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/LF_leg1_simple.stl"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="-0.01293 0.0262 0.0184" rpy="3.1416 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/LF_leg1.STL"/>
+      </geometry>
+      <material name="white">
+	<color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    
+  </link>
+    
+  <joint type="revolute" name="legLF2">
+    
+    <origin xyz="0 0.0239 0" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="-0.15708" upper="1.58825" velocity="2.8143"/>
+    <axis xyz="1 0 0"/>
+    <parent link="LF_shoulder"/>
+    <child link="LF_leg1"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-0.15" soft_upper_limit="1.58" />
+    <dynamics damping="200" friction="200"/>
+    
+  </joint>
+
+  <link name="LF_leg2">
+    
+    <inertial>
+      <origin xyz="-0.004809 -0.000013 0.008158" rpy="0 0 0"/>
+      <mass value="0.073"/>
+      <inertia	ixx="0.00011969654852187499" ixy="0.0" ixz="0.0" iyy="0.00011794468285297098" iyz="0.0" izz="2.9366620594846e-05" />
+    </inertial>
+    
+    <collision name="geom">
+      <origin xyz="-0.0127 0.04666 0.0125" rpy="3.1416 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/F_leg2_simple.stl"/>
+      </geometry>
+    </collision>
+        
+    <visual>
+      <origin xyz="-0.0127 0.0466 0.0125" rpy="3.1416 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/F_leg2.STL"/>
+      </geometry>
+      <material name="grey">
+	<color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+    
+  </link>
+  
+  <joint type="revolute" name="legLF3">
+    
+    <origin xyz="0.01251 0.00519 -0.09762" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="-0.5236" upper="2.2166" velocity="2.8361"/>
+    <axis xyz="0 1 0"/>
+    <parent link="LF_leg1"/>
+    <child link="LF_leg2"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-0.52" soft_upper_limit="2.83" />
+    <dynamics damping="200" friction="200"/>
+    
+  </joint>
+
+  <link name="LF_paw">
+    
+    <inertial>
+      <origin xyz="-0.000193 0 -0.001688" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia ixx="4.888e-05" ixy="0" ixz="0" iyy="4.888e-05" iyz="0" izz="4.888e-05"/>
+    </inertial>
+    
+    <collision>
+      <origin xyz="0 0.0143 0"/>
+      <geometry>
+	<sphere radius="0.01222"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="-0.0124 0.0267 0.0125" rpy="3.14159 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/F_paw.STL"/>
+      </geometry>
+      <material name="dark grey">
+	<color rgba="0.102 0.102 0.102 1"/>
+      </material>
+    </visual>
+    
+  </link>
+  
+  <joint type="fixed" name="LF_paw_joint">
+    
+    <origin xyz="0.04522 0 -0.08144" rpy="0 0 0"/>
+    <dynamics damping="1000" friction="1000"/>
+    <parent link="LF_leg2"/>
+    <child link="LF_paw"/>
+
+  </joint>
+   
+  <link name="RB_shoulder">
+    
+    <inertial>
+      <origin xyz="0.003468 -0.001798 -0.009007" rpy="0 0 0"/>
+      <mass value="0.05"/>
+      <inertia	ixx="2.1327820805349996e-05" ixy="0.0" ixz="0.0" iyy="4.6883250337400005e-05" iyz="0.0" izz="2.6158354222750005e-05" />
+    </inertial>
+    
+    <collision name="geom">
+      <origin xyz="-0.0003 0.0017 0.0042" rpy="3.14159 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/RB_shoulder_simple.stl"/>
+      </geometry>
+    </collision>
+   
+    <visual name="visual">
+      <origin xyz="-0.0395 0.006 0.039" rpy="3.14159 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/RB_shoulder.STL"/>
+      </geometry>
+      <material name="grey">
+	<color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+    
+  </link>
+  
+  <joint type="revolute" name="legRB1">
+    
+    <origin xyz="0.09325 0.006 0.0892" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="-2.3562" upper="2.0944" velocity="2.8143"/>
+    <axis xyz="0 1 0"/>
+    <parent link="body"/>
+    <child link="RB_shoulder"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-2.35" soft_upper_limit="2.09" />
+    <dynamics damping="200" friction="200"/>
+    
+  </joint>
+  
+  <link name="RB_leg1">
+    
+    <inertial>
+      <origin xyz="0.000009 -0.002377 -0.010723" rpy="0 0 0"/>
+      <mass value="0.073"/>
+      <inertia	ixx="0.00011794330961697501" ixy="0.0" ixz="0.0" iyy="0.00011759574351004403" iyz="0.0" izz="2.9943798602131e-05" />
+    </inertial>
+       
+    <collision name="geom">
+      <origin xyz="-0.0029 -0.01955 -0.0451" rpy="3.1416 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/RB_leg1_simple.stl"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="-0.0275 -0.013 0.0185" rpy="3.1416 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/RB_leg1.STL"/>
+      </geometry>
+      <material name="white">
+	<color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+        
+  </link>
+  
+  <joint type="revolute" name="legRB2">
+    
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="-0.15708" upper="1.58825" velocity="2.498"/>
+    <axis xyz="-1 0 0"/>
+    <parent link="RB_shoulder"/>
+    <child link="RB_leg1"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-0.15" soft_upper_limit="1.58" />
+    <dynamics damping="200" friction="200"/>
+    
+  </joint>
+ 
+  <link name="RB_leg2">
+    
+    <inertial>
+      <origin xyz="-0.003284 0 -0.006815" rpy="0 0 0"/>
+      <mass value="0.073"/>
+      <inertia	ixx="0.00010389273401253401" ixy="0.0" ixz="0.0" iyy="0.000118542636504766" iyz="0.0" izz="6.864402663235e-05" />
+    </inertial>
+ 
+     <collision name="geom">
+      <origin xyz="-0.0205 0.0088 -0.0388" rpy="3.1416 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/B_leg2_simple.stl"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="-0.0127 0.0427 0.0125" rpy="3.1416 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/B_leg2.STL"/>
+      </geometry>
+      <material name="grey">
+	<color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+        
+  </link>
+  
+  <joint type="revolute" name="legRB3">
+    
+    <origin xyz="-0.01251 -0.02911 -0.09762" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="-0.5236" upper="2.2166" velocity="2.8361"/>
+    <axis xyz="0 1 0"/>
+    <parent link="RB_leg1"/>
+    <child link="RB_leg2"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-0.52" soft_upper_limit="2.2166" />
+    <dynamics damping="200" friction="200"/>
+  
+  </joint>
+  
+  <link name="RB_paw">
+    
+    <inertial>
+      <origin xyz="-0.000193 0 -0.001688" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia ixx="4.888e-05" ixy="0" ixz="0" iyy="4.888e-05" iyz="0" izz="4.888e-05"/>
+    </inertial>
+    
+    <collision>
+      <origin xyz="0 0.0097 0"/>
+      <geometry>
+	<sphere radius="0.01222"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="-0.0245 0.042 0.024" rpy="3.14159 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/B_paw.STL"/>
+      </geometry>
+      <material name="dark grey">
+	<color rgba="0.102 0.102 0.102 1"/>
+      </material>
+    </visual>
+    
+  </link>
+  
+  <joint type="fixed" name="RB_paw_joint">
+        
+    <origin xyz="-0.01381 0 -0.09363" rpy="0 0 0"/>
+    <dynamics damping="1000" friction="1000"/>
+    <parent link="RB_leg2"/>
+    <child link="RB_paw"/>
+
+  </joint>
+   
+  <link name="LB_shoulder" >
+    
+    <inertial>
+      <origin xyz="0.003468 0.001798 -0.009007" rpy="0 0 0"/>
+      <mass value="0.05"/>
+      <inertia	ixx="2.2119548359949997e-05" ixy="0.0" ixz="0.0" iyy="4.706856616795e-05" iyz="0.0" izz="2.55455926252e-05" />
+    </inertial>
+    
+    <collision name="geom">
+      <origin xyz="-0.0395 0.02956 0.039" rpy="3.14159 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/LB_shoulder_simple.stl"/>
+      </geometry>
+    </collision>
+   
+    <visual name="visual">
+      <origin xyz="-0.0395 0.02956 0.039" rpy="3.14159 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/LB_shoulder.STL"/>
+      </geometry>
+      <material name="grey">
+	<color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+    
+  </link>
+  
+  <joint type="revolute" name="legLB1">
+    
+    <origin xyz="0.09325 0.136 0.0892" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="-2.3562" upper="2.0944" velocity="2.8143"/>
+    <axis xyz="0 1 0"/>
+    <parent link="body"/>
+    <child link="LB_shoulder"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-2.35" soft_upper_limit="2.09" />
+    <dynamics damping="200" friction="200"/>
+    
+  </joint>
+  
+  <link name="LB_leg1">
+    
+    <inertial>
+      <origin xyz="0.000009 0.002377 -0.010723" rpy="0 0 0"/>
+      <mass value="0.073"/>
+      <inertia	ixx="0.00011560491842459497" ixy="0.0" ixz="0.0" iyy="0.00011546106608284297" iyz="0.0" izz="3.0147512367309998e-05" />
+    </inertial>
+       
+    <collision name="geom">
+      <origin xyz="-0.0275 0.02686 0.0185" rpy="3.1416 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/LB_leg1_simple.stl"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="-0.0275 0.02686 0.0185" rpy="3.1416 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/LB_leg1.STL"/>
+      </geometry>
+      <material name="white">
+	<color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+        
+  </link>
+  
+  <joint type="revolute" name="legLB2">
+    
+    <origin xyz="0 0.02388 0" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="-0.15708" upper="1.58825" velocity="2.498"/>
+    <axis xyz="1 0 0"/>
+    <parent link="LB_shoulder"/>
+    <child link="LB_leg1"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-0.15" soft_upper_limit="1.58" />
+    <dynamics damping="200" friction="200"/>
+    
+  </joint>
+  
+  <link name="LB_leg2">
+    
+    <inertial>
+      <origin xyz="-0.003284 0 -0.006815" rpy="0 0 0"/>
+      <mass value="0.073"/>
+      <inertia	ixx="0.00010389273401253401" ixy="0.0" ixz="0.0" iyy="0.000118542636504766" iyz="0.0" izz="6.864402663235e-05" />
+    </inertial>
+ 
+     <collision name="geom">
+      <origin xyz="-0.0205 -0.0097 -0.0388" rpy="3.1416 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/B_leg2_simple.stl"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="-0.0127 0.0242 0.0125" rpy="3.1416 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/B_leg2.STL"/>
+      </geometry>
+      <material name="grey">
+	<color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+        
+  </link>
+  
+  <joint type="revolute" name="legLB3">
+    
+    <origin xyz="-0.01251 0.02975 -0.09762" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="-0.5236" upper="2.2166" velocity="2.8361"/>
+    <axis xyz="0 1 0"/>
+    <parent link="LB_leg1"/>
+    <child link="LB_leg2"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-0.52" soft_upper_limit="2.2166" />
+    <dynamics damping="200" friction="200"/>
+  
+  </joint>
+  
+  <link name="LB_paw">
+    
+    <inertial>
+      <origin xyz="-0.000193 0 -0.001688" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia ixx="4.888e-05" ixy="0" ixz="0" iyy="4.888e-05" iyz="0" izz="4.888e-05"/>
+    </inertial>
+    
+    <collision>
+      <origin xyz="0 -0.0096 0"/>
+      <geometry>
+	<sphere radius="0.01222"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="-0.0245 0.0227 0.024" rpy="3.14159 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/B_paw.STL"/>
+      </geometry>
+      <material name="dark grey">
+	<color rgba="0.102 0.102 0.102 1"/>
+      </material>
+    </visual>
+    
+  </link>
+  
+  <joint type="fixed" name="LB_paw_joint">
+    
+        
+    <origin xyz="-0.01381 0.0001 -0.09363" rpy="0 0 0"/>
+    <dynamics damping="1000" friction="1000"/>
+    <parent link="LB_leg2"/>
+    <child link="LB_paw"/>
+
+  </joint>
+    
+  <link name="tail_base">
+    
+    <inertial>
+      <mass value="0.0001"/>
+      <inertia ixx="6.126e-10" ixy="0" ixz="0" iyy="3.64e-09" iyz="0" izz="3.64e-09"/>	
+    </inertial>
+    
+    <collision>
+      <origin xyz="0 0 0" rpy="0 1.5708 0"/>
+      <geometry>
+	<cylinder radius="0.0035" length="0.02"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="0 0 0" rpy="0 1.5708 0"/>
+      <geometry>
+	<cylinder radius="0.0035" length="0.02"/>
+      </geometry>
+      <material name="grey">
+	<color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+     
+  </link>
+  
+  <joint type="revolute" name="tailPan">
+        
+    <origin xyz="0.0391 0.08298 0.1402" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="-1.0472" upper="1.0472" velocity="4.4724"/>
+    <axis xyz="1 0 0"/>
+    <parent link="body"/>
+    <child link="tail_base"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-1.04" soft_upper_limit="1.04" />
+    <dynamics damping="200" friction="200"/>
+
+  </joint>
+  
+  <link name="tail">
+    
+    <inertial>
+      <origin xyz="-0.008924 0.000002 0.006188" rpy="0 0 0"/>
+      <mass value="0.001"/>
+      <inertia	ixx="1.323786971875e-07" ixy="0.0" ixz="0.0" iyy="1.454691640315e-07" iyz="0.0" izz="3.9588087513400005e-08" />	
+    </inertial>
+    
+    <collision>
+      <origin xyz="-0.015 0.0248 0.115" rpy="3.14159 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/tail_simple.stl"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="-0.015 0.0248 0.115" rpy="3.14159 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/tail.STL"/>
+      </geometry>
+      <material name="grey">
+	<color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+    
+  </link>
+  
+  <joint type="revolute" name="tailTilt">
+        
+    <origin xyz="-0.025 0 0" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="0" upper="0.2618" velocity="4.4724"/>
+    <axis xyz="0 1 0"/>
+    <parent link="tail_base"/>
+    <child link="tail"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="0.01" soft_upper_limit="1.13" />
+    <dynamics damping="200" friction="200"/>
+
+  </joint>
+
+  <link name="neck">
+    
+    <inertial>
+      <origin xyz="-0.000341 -0.000000 -0.008011" rpy="0 0 0"/>
+      <mass value="0.015"/>
+      <inertia ixx="1.97e-06" ixy="0" ixz="0" iyy="1.97e-06" iyz="0" izz="1.688e-06"/>	
+    </inertial>
+    
+    <collision>
+      <origin xyz="0.0460575 -0.00006 0.101875" rpy="0 0.44506 0"/>
+      <geometry>
+	<cylinder radius="0.015" length="0.03"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="0.120935 -0.0471 0.11605415" rpy="0 -2.25147474 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/neck.STL"/>
+      </geometry>
+      <material name="grey">
+	<color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+    
+  </link>
+  
+  <joint type="revolute" name="neck_joint">
+    
+    <origin xyz="0.2706 0.08302 0.0892" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="-0.9250" upper="0.524" velocity="3.0107"/>
+    <axis xyz="0 -1 0"/>
+    <parent link="body"/>
+    <child link="neck"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-0.92" soft_upper_limit="0.52" />
+    <dynamics damping="200" friction="200"/>
+    
+  </joint>
+  
+  <link name="bulb">
+    
+    <inertial>
+      <mass value="0.01"/>
+      <inertia ixx="8.72e-06" ixy="0" ixz="0" iyy="8.72e-06" iyz="0" izz="8.72e-06"/>	
+    </inertial>
+    
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	<sphere radius="0.04669"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry >
+	<sphere radius="0.04"/>
+      </geometry>
+    </visual>
+       
+  </link>
+  
+  <joint type="revolute" name="headTilt">
+    
+    <origin xyz="0.0546 0 0.123" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="-0.349" upper="0.8727" velocity="3.0107"/>
+    <axis xyz="0 1 0"/>
+    <parent link="neck"/>
+    <child link="bulb"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-0.345" soft_upper_limit="0.87"/>
+    <dynamics damping="200" friction="200"/>
+    
+  </joint>
+   
+  <link name="head">
+    
+    <inertial>
+      <origin xyz="0.01 -0.000001 0" rpy="0 -0.44506 0"/>
+      <mass value="0.19"/>
+      <inertia	ixx="0.00035622463752244" ixy="0.0" ixz="0.0" iyy="0.0006802505025500499" iyz="0.0" izz="0.0006800426839130501" />
+    </inertial>
+    
+    <collision>
+      <origin xyz="-0.09 0.053 0.03" rpy="3.14159 -0.44506 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/head_simple.stl"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="-0.09 0.053 0.03" rpy="3.14159 -0.44506 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/head.STL"/>
+      </geometry>
+      <material name="white">
+	<color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    
+  </link>
+  
+  <joint type="revolute" name="headPan">
+    
+    <origin xyz="0 0 0" rpy="0 0.44506 0"/>
+    <limit effort="1000.0" lower="-1.6232" upper="1.6232" velocity="3.0107"/>
+    <axis xyz="0 0 1"/>
+    <parent link="bulb"/>
+    <child link="head"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-1.623" soft_upper_limit="1.623"/>
+    <dynamics damping="200" friction="200"/>
+    
+  </joint>
+  
+  <link name="R_ear_prev">
+    
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.0001"/>
+      <inertia	ixx="2.2e-09" ixy="0.0" ixz="0.0" iyy="4.05e-09" iyz="0.0" izz="2.2e-09" />
+    </inertial>
+    
+    <collision>
+      <origin xyz="0 0.002 0" rpy="1.5707 -0.44506 0"/>
+      <geometry>
+	<cylinder radius="0.009" length="0.0035"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="0 0.002 0" rpy="1.5707 -0.44506 0"/>
+      <geometry>
+	<cylinder radius="0.009" length="0.0035"/>
+      </geometry>
+      <material name="grey">
+	<color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+    
+  </link>
+  
+  <joint type="revolute" name="R_ear_tilt">
+    
+    <origin xyz="-0.024 -0.063 0.0155" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="-0.52359" upper="0.5236" velocity="1000.0"/>
+    <axis xyz="0 1 0"/>
+    <parent link="head"/>
+    <child link="R_ear_prev"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-0.5235" soft_upper_limit="0.523"/>
+    <dynamics damping="1" friction="1"/>
+    
+  </joint>
+  
+  <link name="R_ear">
+    
+    <inertial>
+      <origin xyz="0.002373 0.001406 -0.004885" rpy="0 0 0"/>
+      <mass value="0.005"/>
+      <inertia	ixx="5.8837724687749995e-06" ixy="0.0" ixz="0.0" iyy="7.4401723638699996e-06" iyz="0.0" izz="1.7911055155749995e-06" />
+    </inertial>
+    
+    <collision>
+      <origin xyz="-0.0409 0.06 0.028" rpy="3.14159 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/R_ear_simple.stl"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="-0.0409 0.06 0.028" rpy="3.14159 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/R_ear.STL"/>
+      </geometry>
+      <material name="grey">
+	<color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+    
+  </link>
+  
+  <joint type="revolute" name="R_ear_joint">
+    
+    <origin xyz="0 0 0" rpy="0 -0.44506 0"/>
+    <limit effort="1000.0" lower="0" upper="0.35" velocity="1000.0"/>
+    <axis xyz="-1 0 0"/>
+    <parent link="R_ear_prev"/>
+    <child link="R_ear"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="0" soft_upper_limit="0.35"/>
+    <dynamics damping="200" friction="200"/>
+    
+  </joint>
+  
+  <link name="L_ear_prev">
+    
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.0001"/>
+      <inertia	ixx="2.2e-09" ixy="0.0" ixz="0.0" iyy="4.05e-09" iyz="0.0" izz="2.2e-09" />
+    </inertial>
+    
+    <collision>
+      <origin xyz="0 -0.0072 0" rpy="1.5707 -0.44506 0"/>
+      <geometry>
+	<cylinder radius="0.009" length="0.0035"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="0 -0.0072 0" rpy="1.5707 -0.44506 0"/>
+      <geometry>
+	<cylinder radius="0.009" length="0.0035"/>
+      </geometry>
+      <material name="grey">
+	<color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+    
+  </link>
+  
+  <joint type="revolute" name="L_ear_tilt">
+    
+    <origin xyz="-0.024 0.063 0.0155" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="-0.52359" upper="0.5236" velocity="1000.0"/>
+    <axis xyz="0 -1 0"/>
+    <parent link="head"/>
+    <child link="L_ear_prev"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="-0.5235" soft_upper_limit="0.523"/>
+    <dynamics damping="1" friction="1"/>
+    
+  </joint>
+  
+  <link name="L_ear">
+    
+    <inertial>
+      <origin xyz="0.002373 -0.001406 -0.004885" rpy="0 0 0"/>
+      <mass value="0.005"/>
+      <inertia	ixx="6.283808334035e-06" ixy="0.0" ixz="0.0" iyy="7.968211562435001e-06" iyz="0.0" izz="1.9165199734699996e-06" />	
+    </inertial>
+    
+    <collision>
+      <origin xyz="-0.0409 0.0127 0.028" rpy="3.14159 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/L_ear_simple.stl"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="-0.0409 0.0127 0.028" rpy="3.14159 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/L_ear.STL"/>
+      </geometry>
+      <material name="grey">
+	<color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+    
+  </link>
+  
+  <joint type="revolute" name="L_ear_joint">
+    
+    <origin xyz="0 0 0" rpy="0 -0.44506 0"/>
+    <limit effort="1000.0" lower="0" upper="0.35" velocity="1000.0"/>
+    <axis xyz="1 0 0"/>
+    <parent link="L_ear_prev"/>
+    <child link="L_ear"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="0" soft_upper_limit="0.35"/>
+    <dynamics damping="200" friction="200"/>
+    
+  </joint>
+  
+  <link name="mouth">
+    
+    <inertial>
+      <mass value="0.0001"/>
+      <inertia	ixx="1.3150236214700002e-08" ixy="0.0" ixz="0.0" iyy="3.51055266575e-08" iyz="0.0" izz="4.11448904428e-08" />
+    </inertial>
+    
+    <collision>
+      <origin xyz="-0.002 0.0145 -0.002" rpy="3.14159 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/mouth_simple.stl"/>
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="-0.002 0.0145 -0.002" rpy="3.14159 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/mouth.STL"/>
+      </geometry>
+      <material name="dark grey">
+	<color rgba="0.102 0.102 0.102 1"/>
+      </material>
+    </visual>
+    
+  </link>
+  
+  <joint type="revolute" name="mouth_joint">
+        
+    <origin xyz="0.052 0 0.003" rpy="0 -0.44506 0"/>
+    <limit effort="1" lower="0" upper="1.0472" velocity="1"/>
+    <axis xyz="0 1 0"/>
+    <parent link="head"/>
+    <child link="mouth"/>
+    <safety_controller k_velocity="10" k_position="15" soft_lower_limit="0" soft_upper_limit="1.04"/>
+    <dynamics damping="200" friction="200"/>
+    
+  </joint>
+  
+  <link name="camera_link">
+    
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+	<box size="0.01 0.01 0.01" />
+      </geometry>
+    </collision>
+    
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+	<box size="0.01 0.01 0.01" />
+      </geometry>
+      <material name="red">
+	<color rgba="0.8 0 0 1" />
+      </material>
+    </visual>
+    
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+    
+  </link>
+  
+  <joint type="fixed" name="camera_joint">
+    
+    <axis xyz="1 0 0" />
+    <origin xyz="0.105 -0.00261 0.031" rpy="0 -0.44506 0" />
+    <parent link="head" />
+    <child link="camera_link" />
+    
+  </joint>
+  
+  <!-- camera -->
+  <gazebo reference="camera_link">
+    <sensor type="camera" name="camera_aibo">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>0.993092</horizontal_fov>
+        <image>
+          <width>416</width>
+          <height>320</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.01</near>
+          <far>50.0</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>aiboers7/head/camera_aibo</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera_link</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+  
+</robot>

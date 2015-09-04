@@ -1,0 +1,86 @@
+digraph G {
+node [shape=box];
+"body" [label="body"];
+"LB_shoulder" [label="LB_shoulder"];
+"LB_leg1" [label="LB_leg1"];
+"LB_leg2" [label="LB_leg2"];
+"LB_paw" [label="LB_paw"];
+"LF_shoulder" [label="LF_shoulder"];
+"LF_leg1" [label="LF_leg1"];
+"LF_leg2" [label="LF_leg2"];
+"LF_paw" [label="LF_paw"];
+"RB_shoulder" [label="RB_shoulder"];
+"RB_leg1" [label="RB_leg1"];
+"RB_leg2" [label="RB_leg2"];
+"RB_paw" [label="RB_paw"];
+"RF_shoulder" [label="RF_shoulder"];
+"RF_leg1" [label="RF_leg1"];
+"RF_leg2" [label="RF_leg2"];
+"RF_paw" [label="RF_paw"];
+"neck" [label="neck"];
+"bulb" [label="bulb"];
+"head" [label="head"];
+"L_ear_prev" [label="L_ear_prev"];
+"L_ear" [label="L_ear"];
+"R_ear_prev" [label="R_ear_prev"];
+"R_ear" [label="R_ear"];
+"camera_link" [label="camera_link"];
+"mouth" [label="mouth"];
+"tail_base" [label="tail_base"];
+"tail" [label="tail"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"body" -> "legLB1" [label="xyz: 0.09325 0.136 0.0892 \nrpy: 0 -0 0"]
+"legLB1" -> "LB_shoulder"
+"LB_shoulder" -> "legLB2" [label="xyz: 0 0.02388 0 \nrpy: 0 -0 0"]
+"legLB2" -> "LB_leg1"
+"LB_leg1" -> "legLB3" [label="xyz: -0.01251 0.02975 -0.09762 \nrpy: 0 -0 0"]
+"legLB3" -> "LB_leg2"
+"LB_leg2" -> "LB_paw_joint" [label="xyz: -0.01381 0.0001 -0.09363 \nrpy: 0 -0 0"]
+"LB_paw_joint" -> "LB_paw"
+"body" -> "legLF1" [label="xyz: 0.2706 0.136 0.0892 \nrpy: 0 -0 0"]
+"legLF1" -> "LF_shoulder"
+"LF_shoulder" -> "legLF2" [label="xyz: 0 0.0239 0 \nrpy: 0 -0 0"]
+"legLF2" -> "LF_leg1"
+"LF_leg1" -> "legLF3" [label="xyz: 0.01251 0.00519 -0.09762 \nrpy: 0 -0 0"]
+"legLF3" -> "LF_leg2"
+"LF_leg2" -> "LF_paw_joint" [label="xyz: 0.04522 0 -0.08144 \nrpy: 0 -0 0"]
+"LF_paw_joint" -> "LF_paw"
+"body" -> "legRB1" [label="xyz: 0.09325 0.006 0.0892 \nrpy: 0 -0 0"]
+"legRB1" -> "RB_shoulder"
+"RB_shoulder" -> "legRB2" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"legRB2" -> "RB_leg1"
+"RB_leg1" -> "legRB3" [label="xyz: -0.01251 -0.02911 -0.09762 \nrpy: 0 -0 0"]
+"legRB3" -> "RB_leg2"
+"RB_leg2" -> "RB_paw_joint" [label="xyz: -0.01381 0 -0.09363 \nrpy: 0 -0 0"]
+"RB_paw_joint" -> "RB_paw"
+"body" -> "legRF1" [label="xyz: 0.2706 0.006 0.0892 \nrpy: 0 -0 0"]
+"legRF1" -> "RF_shoulder"
+"RF_shoulder" -> "legRF2" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"legRF2" -> "RF_leg1"
+"RF_leg1" -> "legRF3" [label="xyz: 0.01251 -0.02911 -0.09762 \nrpy: 0 -0 0"]
+"legRF3" -> "RF_leg2"
+"RF_leg2" -> "RF_paw_joint" [label="xyz: 0.04522 0 -0.08144 \nrpy: 0 -0 0"]
+"RF_paw_joint" -> "RF_paw"
+"body" -> "neck_joint" [label="xyz: 0.2706 0.08302 0.0892 \nrpy: 0 -0 0"]
+"neck_joint" -> "neck"
+"neck" -> "headTilt" [label="xyz: 0.0546 0 0.123 \nrpy: 0 -0 0"]
+"headTilt" -> "bulb"
+"bulb" -> "headPan" [label="xyz: 0 0 0 \nrpy: 0 0.44506 0"]
+"headPan" -> "head"
+"head" -> "L_ear_tilt" [label="xyz: -0.024 0.063 0.0155 \nrpy: 0 -0 0"]
+"L_ear_tilt" -> "L_ear_prev"
+"L_ear_prev" -> "L_ear_joint" [label="xyz: 0 0 0 \nrpy: 0 -0.44506 0"]
+"L_ear_joint" -> "L_ear"
+"head" -> "R_ear_tilt" [label="xyz: -0.024 -0.063 0.0155 \nrpy: 0 -0 0"]
+"R_ear_tilt" -> "R_ear_prev"
+"R_ear_prev" -> "R_ear_joint" [label="xyz: 0 0 0 \nrpy: 0 -0.44506 0"]
+"R_ear_joint" -> "R_ear"
+"head" -> "camera_joint" [label="xyz: 0.105 -0.00261 0.031 \nrpy: 0 -0.44506 0"]
+"camera_joint" -> "camera_link"
+"head" -> "mouth_joint" [label="xyz: 0.052 0 0.003 \nrpy: 0 -0.44506 0"]
+"mouth_joint" -> "mouth"
+"body" -> "tailPan" [label="xyz: 0.0391 0.08298 0.1402 \nrpy: 0 -0 0"]
+"tailPan" -> "tail_base"
+"tail_base" -> "tailTilt" [label="xyz: -0.025 0 0 \nrpy: 0 -0 0"]
+"tailTilt" -> "tail"
+}

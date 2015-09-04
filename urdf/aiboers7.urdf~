@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+
+
+
+<robot name="aiboERS7">
+
+
+  <link name="body">
+    <inertial>
+      <origin xyz="0.175 0.08298 0.09" rpy="0 0 0"/>
+      <mass value="0.613"/>
+      <inertia	ixx="0.002475011189860075" ixy="0.0" ixz="0.0" iyy="0.007506640782378954" iyz="0.0" izz="0.007113701431115992" />
+    </inertial>
+      
+    <collision name="geom">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/body_simple.stl"/>
+      </geometry>
+    </collision>
+    
+    <visual name="visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/body.STL"/>
+      </geometry>
+      <material name="white">
+	<color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+   
+  </link>
+   
+  <link name="RF_shoulder" >
+    
+    <inertial>
+      <origin xyz="-0.001888 -0.002933 0.008598" rpy="0 0 0"/>
+      <mass value="0.05"/>
+      <inertia ixx="4.442444469634999e-05" ixy="0.0" ixz="0.0" iyy="8.199685180759998e-05" iyz="0.0" izz="3.9338485833950003e-05" />
+    </inertial>
+    
+    <collision name="geom">
+      <origin xyz="-0.052 0.0059 -0.046" rpy="3.14159 -1.5707 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/RF_shoulder_simple.stl"/>
+      </geometry>
+    </collision>
+   
+    <visual name="visual">
+      <origin xyz="-0.052 0.0059 -0.046" rpy="3.14159 -1.5707 0"/>
+      <geometry>
+	<mesh filename="package://aiboers7_description/meshes/RF_shoulder.STL"/>
+      </geometry>
+      <material name="grey">
+	<color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+    
+  </link>
+  
+  <joint type="revolute" name="legRF1">
+    
+    <parent link="body"/>
+    <child link="RF_shoulder"/>
+    <origin xyz="0.2706 0.006 0.0892" rpy="0 0 0"/>
+    <limit effort="1000.0" lower="-2.0944" upper="2.3562" velocity="2.8143"/>
+    <axis xyz="0 1 0"/>
+    <dynamics damping="200"/>
+    <gazebo reference="legRF1">
+	<pose> 0.2706 0.006 0.0892 0 0 0 </pose>
+    </gazebo>
+    
+  </joint>
+
+</robot>
